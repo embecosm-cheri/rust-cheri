@@ -40,7 +40,7 @@ fd-lock = "3.0.6"
 filetime = "0.2"
 getopts = "0.2.19"
 cc = { git = "https://github.com/lewis-revill/cc-rs-cheri.git", branch = "ljr-cheri-1.0.69" }
-libc = "0.2"
+libc = { git = "https://github.com/lewis-revill/libc-cheri", branch = "0.2.158-rustc-patches" }
 hex = "0.4"
 home = "0.5"
 serde = { version = "1.0.8", features = ["derive"] }
