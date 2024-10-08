@@ -4,23 +4,22 @@ version = 3
 
 [[package]]
 name = "addr2line"
-version = "0.16.0"
+version = "0.17.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3e61f2b7f93d2c7d2b08263acaa4a363b3e276806c68af6134c44f523bf1aacd"
+checksum = "b9ecd88a8c8378ca913a680cd98f0f13ac67383d35993f86c90a70e3f137816b"
 dependencies = [
- "compiler_builtins",
- "gimli 0.25.0",
- "rustc-std-workspace-alloc",
- "rustc-std-workspace-core",
+ "gimli",
 ]
 
 [[package]]
 name = "addr2line"
 version = "0.17.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b9ecd88a8c8378ca913a680cd98f0f13ac67383d35993f86c90a70e3f137816b"
+source = "git+https://github.com/lewis-revill/addr2line-cheri.git?branch=ljr-cheri-0.17.0#6dbb6efb7369e789a14b286a8c9154a9a04c306f"
 dependencies = [
- "gimli 0.26.1",
+ "compiler_builtins",
+ "gimli",
+ "rustc-std-workspace-alloc",
+ "rustc-std-workspace-core",
 ]
 
 [[package]]
@@ -185,12 +184,12 @@ version = "0.3.66"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cab84319d616cfb654d03394f38ab7e6f0919e181b1b57e1fd15e7fb4077d9a7"
 dependencies = [
- "addr2line 0.17.0",
+ "addr2line 0.17.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "cc",
  "cfg-if 1.0.0",
  "libc",
  "miniz_oxide 0.5.3",
- "object 0.29.0",
+ "object 0.29.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "rustc-demangle",
 ]
 
@@ -796,9 +795,8 @@ dependencies = [
 
 [[package]]
 name = "compiler_builtins"
-version = "0.1.82"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "18cd7635fea7bb481ea543b392789844c1ad581299da70184c7175ce3af76603"
+version = "0.1.73"
+source = "git+https://github.com/lewis-revill/compiler-builtins-cheri.git?branch=ljr-cheri-0.1.73#6ec843c28e931d54b6807be2d1932be171ca1c5d"
 dependencies = [
  "cc",
  "rustc-std-workspace-core",
@@ -812,6 +810,7 @@ dependencies = [
  "diff",
  "getopts",
  "glob",
+ "home",
  "lazy_static",
  "lazycell",
  "libc",
@@ -1548,23 +1547,15 @@ dependencies = [
 
 [[package]]
 name = "gimli"
-version = "0.25.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f0a01e0497841a3b2db4f8afa483cce65f7e96a3498bd6c541734792aeac8fe7"
-dependencies = [
- "compiler_builtins",
- "rustc-std-workspace-alloc",
- "rustc-std-workspace-core",
-]
-
-[[package]]
-name = "gimli"
 version = "0.26.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "78cc372d058dcf6d5ecd98510e7fbc9e5aec4d21de70f65fea8fecebcd881bd4"
 dependencies = [
+ "compiler_builtins",
  "fallible-iterator",
  "indexmap",
+ "rustc-std-workspace-alloc",
+ "rustc-std-workspace-core",
  "stable_deref_trait",
 ]
 
@@ -1947,8 +1938,7 @@ checksum = "830d08ce1d1d941e6b30645f1a0eb5643013d835ce3779a5fc208261dbe10f55"
 [[package]]
 name = "libc"
 version = "0.2.135"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "68783febc7782c6c5cb401fbda4de5a9898be1762314da0bb2c10ced61f18b0c"
+source = "git+https://github.com/lewis-revill/libc-cheri.git?branch=0.2.135-rustc-patches#f17ac43989e0aa95ce0b7d90af4cdee3974100c9"
 dependencies = [
  "rustc-std-workspace-core",
 ]
@@ -2358,6 +2348,17 @@ checksum = "21158b2c33aa6d4561f1c0a6ea283ca92bc54802a93b263e910746d679a7eb53"
 dependencies = [
  "crc32fast",
  "flate2",
+ "hashbrown",
+ "indexmap",
+ "memchr",
+]
+
+[[package]]
+name = "object"
+version = "0.29.0"
+source = "git+https://github.com/lewis-revill/object-cheri.git?branch=ljr-cheri-0.29.0#484e16bea058eb20cfc368850dcd3e84130ba51d"
+dependencies = [
+ "crc32fast",
  "hashbrown",
  "indexmap",
  "memchr",
@@ -3297,7 +3298,7 @@ dependencies = [
  "cstr",
  "libc",
  "measureme",
- "object 0.29.0",
+ "object 0.29.0 (git+https://github.com/lewis-revill/object-cheri.git?branch=ljr-cheri-0.29.0)",
  "rustc-demangle",
  "rustc_ast",
  "rustc_attr",
@@ -3331,7 +3332,7 @@ dependencies = [
  "itertools",
  "jobserver",
  "libc",
- "object 0.29.0",
+ "object 0.29.0 (git+https://github.com/lewis-revill/object-cheri.git?branch=ljr-cheri-0.29.0)",
  "pathdiff",
  "regex",
  "rustc_arena",
@@ -4689,7 +4690,7 @@ checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
 name = "std"
 version = "0.0.0"
 dependencies = [
- "addr2line 0.16.0",
+ "addr2line 0.17.0 (git+https://github.com/lewis-revill/addr2line-cheri.git?branch=ljr-cheri-0.17.0)",
  "alloc",
  "cfg-if 1.0.0",
  "compiler_builtins",
@@ -4917,9 +4918,9 @@ version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e6cb0c7868d7f90407531108ab03263d9452a8811b7cdd87675343a40d4aa254"
 dependencies = [
- "gimli 0.26.1",
+ "gimli",
  "hashbrown",
- "object 0.29.0",
+ "object 0.29.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "tracing",
 ]
 
